@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\PlayerMov.cs" />
     <Compile Include="Assets\Scripts\MovementState.cs" />
     <Compile Include="Assets\Scripts\RollD10.cs" />
+    <Compile Include="Assets\Scripts\TileScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

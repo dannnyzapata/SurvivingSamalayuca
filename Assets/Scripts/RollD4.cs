@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class RollD4 : MonoBehaviour
 {
     // Array of dice sides sprites to load from Resources folder
@@ -9,6 +10,11 @@ public class RollD4 : MonoBehaviour
 
     // Reference to sprite renderer to change sprites
     private SpriteRenderer rend;
+    public bool eventIsDone = false;
+    public GameObject Controller;
+    [HideInInspector]
+    public int finalSide = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,20 +28,35 @@ public class RollD4 : MonoBehaviour
     }
 
     // If you left click over the dice then RollTheDice coroutine is started
-    private void OnMouseDown()
+    
+    
+    public void RollDice()
     {
-        StartCoroutine("RollTheDice");
+        eventIsDone = false;
+
+        if (!eventIsDone)
+        {
+            StartCoroutine("RollTheDice");
+            eventIsDone = true;
+            
+        }      
+
     }
+   
+    
+
 
     // Coroutine that rolls the dice
     private IEnumerator RollTheDice()
     {
+        MovementState Controlador = Controller.GetComponent<MovementState>();
+
         // Variable to contain random dice side number.
         // It needs to be assigned. Let it be 0 initially
         int randomDiceSide = 0;
 
         // Final side or value that dice reads in the end of coroutine
-        int finalSide = 0;
+        
 
         // Loop to switch dice sides ramdomly
         // before final side appears. 20 itterations here.
@@ -53,9 +74,10 @@ public class RollD4 : MonoBehaviour
 
         // Assigning final side so you can use this value later in your game
         // for player movement for example
+       
         finalSide = randomDiceSide + 1;
+        Controlador.playerMovement(finalSide);
 
-        // Show final dice value in Console
-        Debug.Log(finalSide);
     }
+
 }

@@ -1,0 +1,13 @@
+Anomalias: 
+5 va a 8 
+14 va a finish 
+
+Ifs
+3 va 4 o 6
+7 va a 5 o 9 
+10 va a 11 o 14
+14 va de vuelta a 8
+11 va a 12 o 13
+13 va de vuelta a 7
+12 va a 15 (Finish)
+
