@@ -60,8 +60,8 @@
     <Compile Include="Assets\Scripts\RollD4.cs" />
     <Compile Include="Assets\Scripts\PlayerMov.cs" />
     <Compile Include="Assets\Scripts\MovementState.cs" />
-    <Compile Include="Assets\Scripts\RollD10.cs" />
     <Compile Include="Assets\Scripts\TileScript.cs" />
+    <Compile Include="Assets\Scripts\RollD10.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

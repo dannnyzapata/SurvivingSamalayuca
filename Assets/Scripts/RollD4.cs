@@ -76,7 +76,7 @@ public class RollD4 : MonoBehaviour
         // for player movement for example
        
         finalSide = randomDiceSide + 1;
-        Controlador.playerMovement(finalSide);
+        Controlador.playerMovement(4);
 
     }
 
