@@ -28,8 +28,8 @@ public class RollD4 : MonoBehaviour
     }
 
     // If you left click over the dice then RollTheDice coroutine is started
-    
-    
+
+
     public void RollDice()
     {
         eventIsDone = false;
@@ -38,12 +38,12 @@ public class RollD4 : MonoBehaviour
         {
             StartCoroutine("RollTheDice");
             eventIsDone = true;
-            
-        }      
+
+        }
 
     }
-   
-    
+
+
 
 
     // Coroutine that rolls the dice
@@ -56,7 +56,7 @@ public class RollD4 : MonoBehaviour
         int randomDiceSide = 0;
 
         // Final side or value that dice reads in the end of coroutine
-        
+
 
         // Loop to switch dice sides ramdomly
         // before final side appears. 20 itterations here.
@@ -74,9 +74,11 @@ public class RollD4 : MonoBehaviour
 
         // Assigning final side so you can use this value later in your game
         // for player movement for example
-       
+
         finalSide = randomDiceSide + 1;
-        Controlador.playerMovement(4);
+        Controlador.playerMovement(finalSide);
+        
+        
 
     }
 
