@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,7 @@ public class MovementState : MonoBehaviour
     [SerializeField]
     public List<GameObject> tiles;
     [SerializeField]
-    public GameObject player;
-    public GameObject d4;
+    public GameObject player;   
     private Vector2 position;
     private Vector2 tilePos;
 
@@ -46,138 +46,127 @@ public class MovementState : MonoBehaviour
         //int thisTurnMovement;
         //Movement = Controlador.finalSide;
         //thisTurnMovement = Movement;
-        int thisTurnMovement = dieResult;
-        Movement = thisTurnMovement;
-        do
+        
+        Movement = dieResult;
+        int[] values = new int[2];
+
+
+        switch (currentTile)
         {
-            Debug.Log("Te queda este movimient: " + thisTurnMovement);
-
-            if (thisTurnMovement > 0)
+            default:
+                currentTile++;       
+                TileBehivior(currentTile);
+                PlayerCurrentPosition();
+                PlayerNextPos();                        
+                break;
+        case 3:
+        values[0] = 6;
+        values[1] = 4;
+        WaitForInput(values);
+        if (currentTile == 6)
             {
-                switch (currentTile)
-                {
-                    default:
-                        currentTile++;
-                        TileBehivior(currentTile);
-                        PlayerCurrentPosition();
-                        PlayerNextPos();
-                        thisTurnMovement--;
-                        break;
-                    case 3:
-                        if (Input.GetKey(KeyCode.LeftArrow))
-                        {
-                            currentTile = 6;
-                            TileBehivior(currentTile);
-                            PlayerCurrentPosition();
-                            PlayerNextPos();
-                            thisTurnMovement--;
+                        
+            TileBehivior(currentTile);
+            PlayerCurrentPosition();
+            PlayerNextPos();  
 
-                        }
-                        else if (Input.GetKey(KeyCode.RightArrow))
-                        {
-                            currentTile = 4;
-                            TileBehivior(currentTile);
-                            PlayerCurrentPosition();
-                            PlayerNextPos();
-                            thisTurnMovement--;
-                        }
-                        break;
-                    case 5:
-                        currentTile = 8;
-                        TileBehivior(currentTile);
-                        PlayerCurrentPosition();
-                        PlayerNextPos();
-                        thisTurnMovement--;
-                        break;
-                    case 7:
-                        if (Input.GetKey(KeyCode.LeftArrow))
-                        {
-                            currentTile = 5;
-                            TileBehivior(currentTile);
-                            PlayerCurrentPosition();
-                            PlayerNextPos();
-                            thisTurnMovement--;
-
-                        }
-                        else if (Input.GetKey(KeyCode.RightArrow))
-                        {
-                            currentTile = 9;
-                            TileBehivior(currentTile);
-                            PlayerCurrentPosition();
-                            PlayerNextPos();
-                            thisTurnMovement--;
-                        }
-                        break;
-                    case 10:
-                        if (Input.GetKey(KeyCode.LeftArrow))
-                        {
-                            currentTile = 11;
-                            TileBehivior(currentTile);
-                            PlayerCurrentPosition();
-                            PlayerNextPos();
-                            thisTurnMovement--;
-
-                        }
-                        else if (Input.GetKey(KeyCode.RightArrow))
-                        {
-                            currentTile = 14;
-                            TileBehivior(currentTile);
-                            PlayerCurrentPosition();
-                            PlayerNextPos();
-                            thisTurnMovement--;
-                        }
-                        break;
-                    case 11:
-                        if (Input.GetKey(KeyCode.LeftArrow))
-                        {
-                            currentTile = 13;
-                            TileBehivior(currentTile);
-                            PlayerCurrentPosition();
-                            PlayerNextPos();
-                            thisTurnMovement--;
-
-                        }
-                        else if (Input.GetKey(KeyCode.RightArrow))
-                        {
-                            currentTile = 12;
-                            TileBehivior(currentTile);
-                            PlayerCurrentPosition();
-                            PlayerNextPos();
-                            thisTurnMovement--;
-                        }
-                        break;
-                    case 12:
-                        currentTile = 15;
-                        TileBehivior(currentTile);
-                        PlayerCurrentPosition();
-                        PlayerNextPos();
-                        thisTurnMovement--;
-                        Movement = 0;
-
-                        break;
-                    case 14:
-                        currentTile = 8;
-                        TileBehivior(currentTile);
-                        PlayerCurrentPosition();
-                        PlayerNextPos();
-                        thisTurnMovement--;
-                        break;
-                    
-                }
-
-
-                if (thisTurnMovement == 0)
-                {
-                    Movement = 0;
-                    Debug.Log("Sin movimiento");
-
-
-                }
-                Debug.Log("Estas en la casilla: " + currentTile);
             }
+            if (currentTile == 4)
+            {
+                        
+            TileBehivior(currentTile);
+            PlayerCurrentPosition();
+            PlayerNextPos();
+        
+            }
+            break;
+        case 5:
+            currentTile = 8;
+            TileBehivior(currentTile);
+            PlayerCurrentPosition();
+            PlayerNextPos();
+                       
+            break;
+        case 7:
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                currentTile = 5;
+                TileBehivior(currentTile);
+                PlayerCurrentPosition();
+                PlayerNextPos();
+                            
 
-        }
-        while (thisTurnMovement > 0);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                currentTile = 9;
+                TileBehivior(currentTile);
+                PlayerCurrentPosition();
+                PlayerNextPos();
+                            
+            }
+            break;
+        case 10:
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                currentTile = 11;
+                TileBehivior(currentTile);
+                PlayerCurrentPosition();
+                PlayerNextPos();
+                            
+
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                currentTile = 14;
+                TileBehivior(currentTile);
+                PlayerCurrentPosition();
+                PlayerNextPos();
+                            
+            }
+            break;
+        case 11:
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                currentTile = 13;
+                TileBehivior(currentTile);
+                PlayerCurrentPosition();
+                PlayerNextPos();
+                           
+
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                currentTile = 12;
+                TileBehivior(currentTile);
+                PlayerCurrentPosition();
+                PlayerNextPos();
+                            
+            }
+            break;
+        case 12:
+            currentTile = 15;
+            TileBehivior(currentTile);
+            PlayerCurrentPosition();
+            PlayerNextPos();
+                        
+            Movement = 0;
+
+            break;
+        case 14:
+            currentTile = 8;
+            TileBehivior(currentTile);
+            PlayerCurrentPosition();
+            PlayerNextPos();
+                     
+            break;
+                    
+        }      
+            
+
+        Debug.Log("Estas en la casilla: " + currentTile);
+        Debug.Log("Estas en el movimiento: " + dieResult);
+
     }
 
 
@@ -198,4 +187,22 @@ public class MovementState : MonoBehaviour
         player.transform.position = tilePos;
         PlayerCurrentPosition();
     }
+
+    void WaitForInput(int[] values)
+    {
+        int left = values[0];
+        int right = values[1];
+        new WaitUntil(() => Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow));
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            currentTile = left;
+           
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            currentTile = right;        
+        }
+
+    }
+
 }
