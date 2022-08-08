@@ -1,21 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MovementState : MonoBehaviour
 {
+    public TextMeshProUGUI numeroDeMovimientoRestante;
     private int currentTile;
-    private int Movement = 1;
     [SerializeField]
     public List<GameObject> tiles;
-    [SerializeField]
-    public GameObject player;
+    public GameObject player;    
+    [HideInInspector]
     private Vector2 position;
     private Vector2 tilePos;
     private bool waitPlayer;
     private int IndexActual;
-    private List<int> posiciones;
+    
 
 
 
@@ -25,31 +26,22 @@ public class MovementState : MonoBehaviour
         currentTile = 0;
         PlayerCurrentPosition(currentTile);
         TileBehivior(currentTile);
+        waitPlayer = true;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-
-    }
-
-
 
 
     public void playerMovement(int dieResult)
-    {
+    {      
         int thisTurnMovement = dieResult;
-        Movement = thisTurnMovement;
         waitPlayer = true;
         StartCoroutine("loopForThePlayer", thisTurnMovement);
+        
     }
 
 
     private void TileBehivior(int IndexTile)
     {
-        Debug.Log("Estas en la casilla con el index" + IndexTile);
+        
         tilePos = tiles[IndexTile].transform.position;
         IndexActual = IndexTile;
 
@@ -57,9 +49,9 @@ public class MovementState : MonoBehaviour
 
     private void PlayerCurrentPosition(int currentPos)
     {
-        int nigga;
+        int posactual;
         position = player.transform.position;
-        nigga = currentPos;
+        posactual = currentPos;
     }
 
 
@@ -71,61 +63,117 @@ public class MovementState : MonoBehaviour
 
     private IEnumerator loopForThePlayer(int thisTurnMovement)
     {
-        int moveToTile;
+        
         while (waitPlayer)
         {
+            numeroDeMovimientoRestante.SetText((thisTurnMovement).ToString());
             yield return null;
             if (thisTurnMovement > 0)
-            {
-                Debug.Log("Estas en la casilla: " + IndexActual);
+            {               
                 switch (IndexActual)
                 {
                     case 0:
-                    case 1:
-                    case 2:
-                    case 4:
-                    case 6:
-                    case 8:
-                    case 9:
-                        moveToTile = currentTile + 1;
-                        Debug.Log("Te vas a mover a la casilla:  " + moveToTile);
-                        TileBehivior(moveToTile);
+                        StartCoroutine("Esperador");
+                        TileBehivior(1);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
-                        //if (currentTile != 3 || currentTile != 7 || currentTile != 10 || currentTile != 14 || currentTile != 11 || currentTile != 12 || currentTile != 13)
-                        //{
-                            thisTurnMovement--;
-                        //}
-
-                        currentTile = moveToTile;
-                        Debug.Log("La siguiente casilla es:  " + IndexActual);
-                        
+                        currentTile = 1;
+                        thisTurnMovement--;
                         if (thisTurnMovement == 0)
                         {
                             waitPlayer = false;
                         }
-
                         break;
-
+                    case 1:
+                        StartCoroutine("Esperador");
+                        TileBehivior(2);
+                        PlayerCurrentPosition(currentTile);
+                        PlayerNextPos();
+                        currentTile = 2;
+                        thisTurnMovement--;
+                        if (thisTurnMovement == 0)
+                        {
+                            waitPlayer = false;
+                        }
+                        break;
+                    case 2:
+                        StartCoroutine("Esperador");
+                        TileBehivior(3);
+                        PlayerCurrentPosition(currentTile);
+                        PlayerNextPos();
+                        currentTile = 3;
+                        thisTurnMovement--;
+                        if (thisTurnMovement == 0)
+                        {
+                            waitPlayer = false;
+                        }
+                        break;
+                    case 4:
+                        StartCoroutine("Esperador");
+                        TileBehivior(5);
+                        PlayerCurrentPosition(currentTile);
+                        PlayerNextPos();
+                        currentTile = 5;
+                        thisTurnMovement--;
+                        if (thisTurnMovement == 0)
+                        {
+                            waitPlayer = false;
+                        }
+                        break;
+                    case 6:
+                        StartCoroutine("Esperador");
+                        TileBehivior(7);
+                        PlayerCurrentPosition(currentTile);
+                        PlayerNextPos();
+                        currentTile = 7;
+                        thisTurnMovement--;
+                        if (thisTurnMovement == 0)
+                        {
+                            waitPlayer = false;
+                        }
+                        break;
+                    case 8:
+                        StartCoroutine("Esperador");
+                        TileBehivior(9);
+                        PlayerCurrentPosition(currentTile);
+                        PlayerNextPos();
+                        currentTile = 9;
+                        thisTurnMovement--;
+                        if (thisTurnMovement == 0)
+                        {
+                            waitPlayer = false;
+                        }
+                        break;
+                    case 9:
+                        StartCoroutine("Esperador");
+                        TileBehivior(10);
+                        PlayerCurrentPosition(currentTile);
+                        PlayerNextPos();
+                        currentTile = 10;
+                        thisTurnMovement--;
+                        if (thisTurnMovement == 0)
+                        {
+                            waitPlayer = false;
+                        }
+                        break;                        
                     case 3:
                         if (waitPlayer)
                         {
-                            Debug.Log("Waiting for player");
-                            if (Input.GetKey(KeyCode.LeftArrow))
+                            if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
+                                StartCoroutine("Esperador");
                                 TileBehivior(6);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                moveToTile = 6;
                                 thisTurnMovement--;
                                 
                             }
-                            if (Input.GetKey(KeyCode.RightArrow))
+                            if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
+                                StartCoroutine("Esperador");
                                 TileBehivior(4);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                moveToTile = 4;
                                 thisTurnMovement--;
                                 
 
@@ -135,15 +183,15 @@ public class MovementState : MonoBehaviour
                         else if (thisTurnMovement == 0)
                         {
                             PlayerCurrentPosition(currentTile);
-                            Debug.Log("Te quedas en la casilla 3");
                             waitPlayer = false;
                         }
                         break;
                     case 5:
+                        StartCoroutine("Esperador");
                         TileBehivior(8);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
-                        currentTile = 8;
+                        currentTile = 8;                     
                         thisTurnMovement--;
                         if (thisTurnMovement == 0)
                         {
@@ -153,25 +201,22 @@ public class MovementState : MonoBehaviour
                     case 7:
                         if (thisTurnMovement > 0)
                         {
-                            Debug.Log("Waiting for player");
-                            if (Input.GetKey(KeyCode.LeftArrow))
+                            if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
                                 TileBehivior(5);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                moveToTile = 5;
+                                StartCoroutine("Esperador");
                                 thisTurnMovement--;
-                                waitPlayer = false;
 
                             }
-                            if (Input.GetKey(KeyCode.RightArrow))
+                            if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
                                 TileBehivior(9);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                moveToTile = 9;
+                                StartCoroutine("Esperador");
                                 thisTurnMovement--;
-                                waitPlayer = false;
 
                             }
 
@@ -179,32 +224,29 @@ public class MovementState : MonoBehaviour
                         else if (thisTurnMovement == 0 && !waitPlayer)
                         {
                             PlayerCurrentPosition(currentTile);
-                            Debug.Log("Te quedas en la casilla 3");
                             waitPlayer = false;
                         }
                         break;
                     case 10:
                         if (thisTurnMovement > 0)
                         {
-                            Debug.Log("Waiting for player");
-                            if (Input.GetKey(KeyCode.LeftArrow))
+                            if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
+                                StartCoroutine("Esperador");
                                 TileBehivior(11);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                moveToTile = 11;
                                 thisTurnMovement--;
-                                waitPlayer = false;
 
                             }
-                            if (Input.GetKey(KeyCode.RightArrow))
+                            if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
+                                StartCoroutine("Esperador");
                                 TileBehivior(14);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                moveToTile = 14;
                                 thisTurnMovement--;
-                                waitPlayer = false;
+                                
 
                             }
 
@@ -212,32 +254,27 @@ public class MovementState : MonoBehaviour
                         else if (thisTurnMovement == 0)
                         {
                             PlayerCurrentPosition(currentTile);
-                            Debug.Log("Te quedas en la casilla 3");
                             waitPlayer = false;
                         }
                         break;
                     case 11:
                         if (thisTurnMovement > 0)
                         {
-                            Debug.Log("Waiting for player");
-                            if (Input.GetKey(KeyCode.LeftArrow))
+                            if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
+                                StartCoroutine("Esperador");
                                 TileBehivior(13);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                moveToTile = 13;
                                 thisTurnMovement--;
-                                waitPlayer = false;
-
                             }
-                            if (Input.GetKey(KeyCode.RightArrow))
+                            if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
+                                StartCoroutine("Esperador");
                                 TileBehivior(12);
                                 PlayerCurrentPosition(currentTile);
-                                PlayerNextPos();
-                                moveToTile = 12;
-                                thisTurnMovement--;
-                                waitPlayer = false;
+                                PlayerNextPos();                                
+                                thisTurnMovement--;                              
 
                             }
 
@@ -245,18 +282,16 @@ public class MovementState : MonoBehaviour
                         else if (thisTurnMovement == 0)
                         {
                             PlayerCurrentPosition(currentTile);
-                            Debug.Log("Te quedas en la casilla 3");
                             waitPlayer = false;
                         }
                         break;
                     case 12:
-
+                        StartCoroutine("Esperador");
                         TileBehivior(15);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
                         currentTile = 15;
-                        thisTurnMovement--;
-                        Movement = 0;
+                        thisTurnMovement--;                       
                         if (thisTurnMovement == 0)
                         {
                             waitPlayer = false;
@@ -264,6 +299,7 @@ public class MovementState : MonoBehaviour
 
                         break;
                     case 13:
+                        StartCoroutine("Esperador");
                         TileBehivior(7);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -276,7 +312,7 @@ public class MovementState : MonoBehaviour
                         break;
 
                     case 14:
-
+                        StartCoroutine("Esperador");
                         TileBehivior(8);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -288,9 +324,12 @@ public class MovementState : MonoBehaviour
                         }
                         break;
 
+                    case 15:
+                        waitPlayer = false;
+                        break;
+
 
                 }
-                Debug.Log("Te queda este movimiento: " + thisTurnMovement);
 
             }
 
@@ -299,6 +338,11 @@ public class MovementState : MonoBehaviour
         }
 
 
+    }
+
+    private IEnumerator Esperador()
+    {
+        yield return new WaitForSecondsRealtime(5);
     }
 
 }

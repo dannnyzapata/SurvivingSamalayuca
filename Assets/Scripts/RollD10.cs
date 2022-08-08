@@ -56,6 +56,5 @@ public class RollD10 : MonoBehaviour
         finalSide = randomDiceSide + 1;
 
         // Show final dice value in Console
-        Debug.Log(finalSide);
     }
 }
