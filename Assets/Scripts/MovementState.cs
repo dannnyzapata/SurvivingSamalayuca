@@ -77,10 +77,16 @@ public class MovementState : MonoBehaviour
             yield return null;
             if (thisTurnMovement > 0)
             {
-                Debug.Log("Estas en la casilla: " + currentTile);
-                switch (currentTile)
+                Debug.Log("Estas en la casilla: " + IndexActual);
+                switch (IndexActual)
                 {
-                    default:
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 4:
+                    case 6:
+                    case 8:
+                    case 9:
                         moveToTile = currentTile + 1;
                         Debug.Log("Te vas a mover a la casilla:  " + moveToTile);
                         TileBehivior(moveToTile);
@@ -92,7 +98,7 @@ public class MovementState : MonoBehaviour
                         //}
 
                         currentTile = moveToTile;
-                        Debug.Log("La siguiente casilla es:  " + currentTile);
+                        Debug.Log("La siguiente casilla es:  " + IndexActual);
                         
                         if (thisTurnMovement == 0)
                         {
@@ -112,7 +118,7 @@ public class MovementState : MonoBehaviour
                                 PlayerNextPos();
                                 moveToTile = 6;
                                 thisTurnMovement--;
-                                waitPlayer = false;
+                                
                             }
                             if (Input.GetKey(KeyCode.RightArrow))
                             {
@@ -121,7 +127,7 @@ public class MovementState : MonoBehaviour
                                 PlayerNextPos();
                                 moveToTile = 4;
                                 thisTurnMovement--;
-                                waitPlayer = false;
+                                
 
                             }
 
