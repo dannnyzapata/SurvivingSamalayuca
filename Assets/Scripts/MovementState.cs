@@ -10,12 +10,14 @@ public class MovementState : MonoBehaviour
     private int currentTile;
     [SerializeField]
     public List<GameObject> tiles;
-    public GameObject player;    
+    public GameObject player;
+    private float waitTime = 0.5f;
     [HideInInspector]
     private Vector2 position;
     private Vector2 tilePos;
     private bool waitPlayer;
     private int IndexActual;
+   
     
 
 
@@ -66,14 +68,13 @@ public class MovementState : MonoBehaviour
         
         while (waitPlayer)
         {
-            numeroDeMovimientoRestante.SetText((thisTurnMovement).ToString());
             yield return null;
             if (thisTurnMovement > 0)
-            {               
+            {
                 switch (IndexActual)
                 {
                     case 0:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(1);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -85,7 +86,7 @@ public class MovementState : MonoBehaviour
                         }
                         break;
                     case 1:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(2);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -97,7 +98,7 @@ public class MovementState : MonoBehaviour
                         }
                         break;
                     case 2:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(3);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -109,7 +110,7 @@ public class MovementState : MonoBehaviour
                         }
                         break;
                     case 4:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(5);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -121,7 +122,7 @@ public class MovementState : MonoBehaviour
                         }
                         break;
                     case 6:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(7);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -133,7 +134,7 @@ public class MovementState : MonoBehaviour
                         }
                         break;
                     case 8:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(9);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -145,7 +146,7 @@ public class MovementState : MonoBehaviour
                         }
                         break;
                     case 9:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(10);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -161,19 +162,19 @@ public class MovementState : MonoBehaviour
                         {
                             if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
-                                StartCoroutine("Esperador");
                                 TileBehivior(6);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
+                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
                                 
                             }
                             if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
-                                StartCoroutine("Esperador");
                                 TileBehivior(4);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
+                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
                                 
 
@@ -187,7 +188,7 @@ public class MovementState : MonoBehaviour
                         }
                         break;
                     case 5:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(8);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -206,7 +207,7 @@ public class MovementState : MonoBehaviour
                                 TileBehivior(5);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                StartCoroutine("Esperador");
+                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
 
                             }
@@ -215,7 +216,7 @@ public class MovementState : MonoBehaviour
                                 TileBehivior(9);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                StartCoroutine("Esperador");
+                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
 
                             }
@@ -232,19 +233,19 @@ public class MovementState : MonoBehaviour
                         {
                             if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
-                                StartCoroutine("Esperador");
                                 TileBehivior(11);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
+                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
 
                             }
                             if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
-                                StartCoroutine("Esperador");
                                 TileBehivior(14);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
+                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
                                 
 
@@ -262,18 +263,18 @@ public class MovementState : MonoBehaviour
                         {
                             if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
-                                StartCoroutine("Esperador");
                                 TileBehivior(13);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
+                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
                             }
                             if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
-                                StartCoroutine("Esperador");
                                 TileBehivior(12);
                                 PlayerCurrentPosition(currentTile);
-                                PlayerNextPos();                                
+                                PlayerNextPos();
+                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;                              
 
                             }
@@ -286,7 +287,7 @@ public class MovementState : MonoBehaviour
                         }
                         break;
                     case 12:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(15);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -299,7 +300,7 @@ public class MovementState : MonoBehaviour
 
                         break;
                     case 13:
-                        StartCoroutine("Esperador");
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(7);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
@@ -312,11 +313,11 @@ public class MovementState : MonoBehaviour
                         break;
 
                     case 14:
-                        StartCoroutine("Esperador");
                         TileBehivior(8);
                         PlayerCurrentPosition(currentTile);
                         PlayerNextPos();
                         currentTile = 8;
+                        yield return new WaitForSecondsRealtime(waitTime);
                         thisTurnMovement--;
                         if (thisTurnMovement == 0)
                         {
@@ -330,19 +331,17 @@ public class MovementState : MonoBehaviour
 
 
                 }
+                numeroDeMovimientoRestante.SetText((thisTurnMovement).ToString());
+
 
             }
 
-            
+
 
         }
 
 
     }
 
-    private IEnumerator Esperador()
-    {
-        yield return new WaitForSecondsRealtime(5);
-    }
 
 }
