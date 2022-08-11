@@ -130,6 +130,8 @@ public class MovementState : MonoBehaviour
                         {
                             waitPlayer = false;
                         }
+                        
+
                         break;
                     case 6:
                         yield return new WaitForSecondsRealtime(waitTime);
@@ -172,19 +174,21 @@ public class MovementState : MonoBehaviour
                         {
                             if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
+                                yield return new WaitForSecondsRealtime(waitTime);
+
                                 TileBehivior(6);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
                                 
                             }
                             if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
+                                yield return new WaitForSecondsRealtime(waitTime);
+
                                 TileBehivior(4);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
                                 
 
@@ -214,19 +218,21 @@ public class MovementState : MonoBehaviour
                         {
                             if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
+                                yield return new WaitForSecondsRealtime(waitTime);
+
                                 TileBehivior(5);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
 
                             }
                             if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
+                                yield return new WaitForSecondsRealtime(waitTime);
+
                                 TileBehivior(9);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
 
                             }
@@ -243,19 +249,21 @@ public class MovementState : MonoBehaviour
                         {
                             if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
+                                yield return new WaitForSecondsRealtime(waitTime);
+
                                 TileBehivior(11);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
 
                             }
                             if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
+                                yield return new WaitForSecondsRealtime(waitTime);
+
                                 TileBehivior(14);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
                                 
 
@@ -273,18 +281,20 @@ public class MovementState : MonoBehaviour
                         {
                             if (Input.GetKeyDown(KeyCode.LeftArrow))
                             {
+                                yield return new WaitForSecondsRealtime(waitTime);
+
                                 TileBehivior(13);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;
                             }
                             if (Input.GetKeyDown(KeyCode.RightArrow))
                             {
+                                yield return new WaitForSecondsRealtime(waitTime);
+
                                 TileBehivior(12);
                                 PlayerCurrentPosition(currentTile);
                                 PlayerNextPos();
-                                yield return new WaitForSecondsRealtime(waitTime);
                                 thisTurnMovement--;                              
 
                             }
@@ -323,12 +333,12 @@ public class MovementState : MonoBehaviour
                         break;
 
                     case 14:
+                        yield return new WaitForSecondsRealtime(waitTime);
                         TileBehivior(8);
                         PlayerCurrentPosition(currentTile);
-                        PlayerNextPos();
-                        currentTile = 8;
-                        yield return new WaitForSecondsRealtime(waitTime);
+                        PlayerNextPos();                      
                         thisTurnMovement--;
+                        currentTile = 8;
                         if (thisTurnMovement == 0)
                         {
                             waitPlayer = false;
@@ -337,6 +347,7 @@ public class MovementState : MonoBehaviour
 
                     case 15:
                         waitPlayer = false;
+                        //Win
                         break;
 
 
