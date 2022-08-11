@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class RollD4 : MonoBehaviour
 {
@@ -12,6 +12,8 @@ public class RollD4 : MonoBehaviour
     private SpriteRenderer rend;
     public bool eventIsDone = false;
     public GameObject Controller;
+    public bool canRoll;
+    public Button MoveButton;
     [HideInInspector]
     public int finalSide = 0;
 
@@ -24,15 +26,29 @@ public class RollD4 : MonoBehaviour
 
         // Load dice sides sprites to array from DiceSides subfolder of Resources folder
         diceSides = Resources.LoadAll<Sprite>("PNGs/dice/d4");
+        
 
     }
 
     // If you left click over the dice then RollTheDice coroutine is started
 
+    private void Update()
+    {
+        if (canRoll)
+        {
+            MoveButton.interactable = true;
+        }
+        else if (!canRoll)
+        {
+            MoveButton.interactable = false;
+        }
+
+    }
 
     public void RollDice()
     {
         eventIsDone = false;
+        canRoll = false;
 
         if (!eventIsDone)
         {

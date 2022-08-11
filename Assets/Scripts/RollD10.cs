@@ -9,7 +9,8 @@ public class RollD10 : MonoBehaviour
 
     // Reference to sprite renderer to change sprites
     private SpriteRenderer rend;
-
+    public GameObject Controller; 
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -21,15 +22,21 @@ public class RollD10 : MonoBehaviour
 
     }
 
+
+
+
     // If you left click over the dice then RollTheDice coroutine is started
-    private void OnMouseDown()
+    public void rollTheDice()
     {
         StartCoroutine("RollTheDice");
+
     }
 
     // Coroutine that rolls the dice
     private IEnumerator RollTheDice()
     {
+        ResourceManager Controlador = Controller.GetComponent<ResourceManager>();
+
         // Variable to contain random dice side number.
         // It needs to be assigned. Let it be 0 initially
         int randomDiceSide = 0;
@@ -55,6 +62,7 @@ public class RollD10 : MonoBehaviour
         // for player movement for example
         finalSide = randomDiceSide + 1;
 
+        Controlador.GatherResources(finalSide);
         // Show final dice value in Console
     }
 }

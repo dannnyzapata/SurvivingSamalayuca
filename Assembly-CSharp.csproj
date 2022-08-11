@@ -60,6 +60,11 @@
     <Compile Include="Assets\Scripts\RollD4.cs" />
     <Compile Include="Assets\Scripts\MovementState.cs" />
     <Compile Include="Assets\Scripts\RollD10.cs" />
+    <Compile Include="Assets\Scripts\ResourceManager.cs" />
+    <Compile Include="Assets\Scripts\EventoBueno.cs" />
+    <Compile Include="Assets\Scripts\EventoMalo.cs" />
+    <Compile Include="Assets\Scripts\EventoNeutral.cs" />
+    <Compile Include="Assets\Scripts\EventTileManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

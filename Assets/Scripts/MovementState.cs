@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MovementState : MonoBehaviour
 {
@@ -12,30 +13,37 @@ public class MovementState : MonoBehaviour
     public List<GameObject> tiles;
     public GameObject player;
     private float waitTime = 0.5f;
+    public GameObject d4;
     [HideInInspector]
     private Vector2 position;
     private Vector2 tilePos;
     private bool waitPlayer;
     private int IndexActual;
-   
-    
+
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        
         currentTile = 0;
         PlayerCurrentPosition(currentTile);
         TileBehivior(currentTile);
         waitPlayer = true;
     }
 
+    private void Update()
+    {
+       
+    }
 
     public void playerMovement(int dieResult)
-    {      
+    {
+        
         int thisTurnMovement = dieResult;
-        waitPlayer = true;
+        waitPlayer = true;       
         StartCoroutine("loopForThePlayer", thisTurnMovement);
         
     }
@@ -65,7 +73,9 @@ public class MovementState : MonoBehaviour
 
     private IEnumerator loopForThePlayer(int thisTurnMovement)
     {
-        
+        RollD4 manager = d4.GetComponent<RollD4>();
+
+
         while (waitPlayer)
         {
             yield return null;
@@ -332,7 +342,10 @@ public class MovementState : MonoBehaviour
 
                 }
                 numeroDeMovimientoRestante.SetText((thisTurnMovement).ToString());
-
+                if (thisTurnMovement == 0)
+                {
+                    manager.canRoll = true;
+                }
 
             }
 
