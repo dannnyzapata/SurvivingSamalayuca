@@ -49,7 +49,7 @@ public class RollD10 : MonoBehaviour
         for (int i = 0; i <= 20; i++)
         {
             // Pick up random value from 0 to 5 (All inclusive)
-            randomDiceSide = Random.Range(0, 10);
+            randomDiceSide = Random.Range(1, 10);
 
             // Set sprite to upper face of dice from array according to random value
             rend.sprite = diceSides[randomDiceSide];
@@ -60,8 +60,8 @@ public class RollD10 : MonoBehaviour
 
         // Assigning final side so you can use this value later in your game
         // for player movement for example
-        finalSide = randomDiceSide + 1;
-
+        finalSide = randomDiceSide;
+        Debug.Log(finalSide);
         Controlador.GatherResources(finalSide);
         // Show final dice value in Console
     }

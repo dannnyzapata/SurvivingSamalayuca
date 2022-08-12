@@ -346,7 +346,7 @@ public class MovementState : MonoBehaviour
                         break;
 
                     case 15:
-                        waitPlayer = false;
+                        thisTurnMovement = 0;
                         //Win
                         break;
 
@@ -356,6 +356,8 @@ public class MovementState : MonoBehaviour
                 if (thisTurnMovement == 0)
                 {
                     manager.canRoll = true;
+                    waitPlayer = false;
+
                 }
 
             }
